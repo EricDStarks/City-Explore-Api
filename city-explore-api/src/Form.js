@@ -19,6 +19,8 @@ function FindCity() {
         // "lon": "-117.1627728"
     })
 
+    var data = require("./Weather.json");
+
 
     return (
         <div className="Explore">
