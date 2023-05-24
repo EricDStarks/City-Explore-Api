@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 const app = express()
 const WeatherData = require('./Data/Weather.json') 
 class ForeCast {
@@ -8,12 +9,16 @@ class ForeCast {
     }
 }
 
+app.use(cors())
+
 
 app.get('/', function(request, response){
     response.send("hello")
 })
 //http://http://localhost:3001/Weather?lat=4&lon=4&searchQuery=Paris
 app.get("/Weather", function(request, response) {
+   
+
     console.log(request.query.lat)
     console.log(request.query.lon)
     console.log(request.query.searchQuery)
@@ -31,5 +36,10 @@ app.get("/Weather", function(request, response) {
     })
     response.send(forecastData)
 })
+
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something broke!')
+  })
 
 app.listen(3001)
