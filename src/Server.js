@@ -4,7 +4,7 @@ const express = require("express")
 const cors = require("cors")
 const app = express()
 const axios =  require('axios')
-const WeatherData = require('./Data/Weather.json') 
+const WeatherData = require('../Data/Weather.json') 
 class ForeCast {
     constructor(date, description) {
         this.date = date
