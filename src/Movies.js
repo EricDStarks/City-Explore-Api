@@ -15,14 +15,14 @@ async function getMovies(city) {
     if (movieResponse == undefined) {
         movieResponse = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${city}`, headers = headers)
         moviecache[city] = movieResponse.data
-        console.log("cache miss")
+        return movieResponse.data.results
     }
 
     //send a request mov iedb api
     //URL: https://api.themoviedb.org/3/movie
    
     return (
-        movieResponse.data.results
+        movieResponse.results
     )
 
 }
